@@ -9,8 +9,16 @@ void main() {
           backgroundColor: Colors.amber,
           centerTitle: true,
         ),
-        body: const Text("Hello Appp "),
+        body: const Home(),
       )
     )
   );
+}
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("พึ่งสร้างสเตจเลสวิเจ็ตขึ้นมา แล้วส่งไปที่บอดี้ ใช้ชื่อว่า Home");
+  }
 }
