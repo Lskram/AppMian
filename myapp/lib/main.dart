@@ -10,7 +10,7 @@ void main() {
           backgroundColor: Colors.amber,
           centerTitle: true,
         ),
-        body: const Homee(),
+        body: const Home(),
       )
     )
   );
