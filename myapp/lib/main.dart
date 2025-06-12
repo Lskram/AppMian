@@ -19,6 +19,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("พึ่งสร้างสเตจเลสวิเจ็ตขึ้นมา แล้วส่งไปที่บอดี้ ใช้ชื่อว่า Home");
+    return Container(
+      color: Colors.deepOrange,
+      margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
+      padding: const EdgeInsets.all(7),
+      child:  Text(
+        "TLE TA WAN",
+        style: TextStyle(
+          fontSize: 30,
+          letterSpacing: 3,
+        ),
+      ),
+    );
   }
 }
