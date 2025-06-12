@@ -6,15 +6,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.deepOrange,
-      margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
-      padding: const EdgeInsets.all(7),
-      child:  Text(
-        "TLE TA WAN",
-        style: TextStyle(
-          fontSize: 30,
-          letterSpacing: 3,
+    return Center(
+      child: Container(
+        color: Colors.deepOrange,
+        padding: const EdgeInsets.all(5),
+        child:  Text(
+          "TLE TA WAN",
+          style: TextStyle(
+            fontSize: 30,
+            letterSpacing: 3,
+          ),
         ),
       ),
     );
