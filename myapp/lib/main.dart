@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/home.dart';
+import 'package:myapp/screens/item.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,11 +15,11 @@ class MyApp extends StatelessWidget {
       title: "My app",
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("My App"),
+          title: const Text("หน้าแรกของแอปพลิเคชั่น"),
           backgroundColor: Colors.amber,
           centerTitle: true,
         ),
-        body: const Home(),
+        body: const Item(),
       ),
     );
   }
