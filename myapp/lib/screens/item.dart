@@ -8,47 +8,26 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-  int quantity = 5;
-  void addQuantity() {
-    setState(() {
-      quantity += 1;
-    });
-  }
-
-  void subtractQuantity() {
-    setState(() {
-      quantity <= 0 ? 0 : quantity -= 1;
-    });
-  }
+  List data = ["สมชาย", "ก้อง", "ชาลี", "โจโจ้","ลูกน้ำ"];
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "$quantity",
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+    return ListView.builder(
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.deepOrange
           ),
-          SizedBox(height: 20),
-          OutlinedButton(
-            onPressed: addQuantity,
-            child: Text(
-              "+",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
+          margin: EdgeInsets.symmetric(horizontal: 2,vertical: 5),
+          padding: EdgeInsets.all(30),
+          child: Text(
+            data[index],
+            style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 20),
-          OutlinedButton(
-            onPressed: subtractQuantity,
-            child: Text(
-              "-",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
