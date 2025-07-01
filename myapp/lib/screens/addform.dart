@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/person.dart';
 
 class Addform extends StatefulWidget {
   const Addform({super.key});
@@ -8,6 +9,11 @@ class Addform extends StatefulWidget {
 }
 
 class _AddformState extends State<Addform> {
+  final _formKey = GlobalKey<FormState>();
+  String _name = '';
+  int _age = 20;
+  Job _job = Job.police;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,6 +27,7 @@ class _AddformState extends State<Addform> {
         body: Padding(
           padding: EdgeInsets.all(15),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 TextFormField(
@@ -28,14 +35,34 @@ class _AddformState extends State<Addform> {
                   decoration: InputDecoration(
                     label: Text("ชื่อ", style: TextStyle(fontSize: 20)),
                   ),
+                  onSaved: (value) {
+                    _name = value!;
+                  },
                 ),
                 TextFormField(
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     label: Text("อายุ", style: TextStyle(fontSize: 20)),
                   ),
+                  onSaved: (value) {
+                    _age = int.parse(value.toString());
+                  },
                 ),
                 const SizedBox(height: 20),
+                DropdownButtonFormField(
+                  value: _job,
+                  decoration: const InputDecoration(
+                    label: Text("อาชีพ", style: TextStyle(fontSize: 20)),
+                  ),
+                  items: Job.values.map((Key) {
+                    return DropdownMenuItem(value: Key, child: Text(Key.title));
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _job = value!;
+                    });
+                  },
+                ),
                 FilledButton(
                   onPressed: () {},
                   style: FilledButton.styleFrom(backgroundColor: Colors.blue),
