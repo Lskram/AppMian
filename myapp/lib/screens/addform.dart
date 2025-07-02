@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/main.dart';
 import 'package:myapp/models/person.dart';
 
 class Addform extends StatefulWidget {
@@ -78,6 +79,14 @@ class _AddformState extends State<Addform> {
                 FilledButton(
                   onPressed: () {
                     _formKey.currentState!.validate();
+                    _formKey.currentState!.save();
+                    data.add(Person(name: _name, age: _age, job: _job));
+                    _formKey.currentState!.reset();
+                    Navigator.pushReplacement(context, 
+                      MaterialPageRoute(
+                        builder: (ctx) => const MyApp(),
+                      )
+                    );
                   },
                   style: FilledButton.styleFrom(backgroundColor: Colors.blue),
                   child: Text("บันทึก", style: TextStyle(fontSize: 20)),
