@@ -35,6 +35,12 @@ class _AddformState extends State<Addform> {
                   decoration: InputDecoration(
                     label: Text("ชื่อ", style: TextStyle(fontSize: 20)),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "ช่วยกรอกชื่อด้วยครับลูกค้า";
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     _name = value!;
                   },
@@ -44,6 +50,12 @@ class _AddformState extends State<Addform> {
                   decoration: InputDecoration(
                     label: Text("อายุ", style: TextStyle(fontSize: 20)),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "กรอกอายุให้หน่อยครับผม";
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     _age = int.parse(value.toString());
                   },
@@ -64,7 +76,9 @@ class _AddformState extends State<Addform> {
                   },
                 ),
                 FilledButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _formKey.currentState!.validate();
+                  },
                   style: FilledButton.styleFrom(backgroundColor: Colors.blue),
                   child: Text("บันทึก", style: TextStyle(fontSize: 20)),
                 ),
