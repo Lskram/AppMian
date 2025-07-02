@@ -5,7 +5,7 @@ import 'screens/register.dart';
 
 
 void main() {
-  runApp(const Home());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,12 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "My app",
-      initialRoute: '/login',
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/register': (context) => const RegisterPage(),
-        '/home': (context) => const Home(),
-      },
+      home: const Home(),
     );
   }
 }
