@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-
 class HomeTask {
   final String title;
   final String subtitle;
@@ -223,10 +222,7 @@ class _HomeState extends State<Home> {
             Container(
               width: 32,
               height: 32,
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-              ),
+              decoration: BoxDecoration(color: color, shape: BoxShape.circle),
               child: Center(
                 child: Text(
                   number,
@@ -375,14 +371,22 @@ class _HomeState extends State<Home> {
                       selectedColor = Colors.blue.shade400;
                       (context as Element).markNeedsBuild();
                     }),
-                    _buildColorPicker(Colors.orange.shade400, selectedColor, () {
-                      selectedColor = Colors.orange.shade400;
-                      (context as Element).markNeedsBuild();
-                    }),
-                    _buildColorPicker(Colors.purple.shade400, selectedColor, () {
-                      selectedColor = Colors.purple.shade400;
-                      (context as Element).markNeedsBuild();
-                    }),
+                    _buildColorPicker(
+                      Colors.orange.shade400,
+                      selectedColor,
+                      () {
+                        selectedColor = Colors.orange.shade400;
+                        (context as Element).markNeedsBuild();
+                      },
+                    ),
+                    _buildColorPicker(
+                      Colors.purple.shade400,
+                      selectedColor,
+                      () {
+                        selectedColor = Colors.purple.shade400;
+                        (context as Element).markNeedsBuild();
+                      },
+                    ),
                   ],
                 ),
               ],
@@ -403,7 +407,9 @@ class _HomeState extends State<Home> {
                     HomeTask(
                       title: _titleController.text.trim(),
                       subtitle: _subtitleController.text.trim(),
-                      time: _timeController.text.trim().isEmpty ? '-' : _timeController.text.trim(),
+                      time: _timeController.text.trim().isEmpty
+                          ? '-'
+                          : _timeController.text.trim(),
                       color: selectedColor,
                       isEnabled: true,
                     ),
