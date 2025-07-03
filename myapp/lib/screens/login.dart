@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                             password,
                           );
                           if (user != null) {
-                            Navigator.pushReplacementNamed(context, '/home');
+                            Navigator.pushReplacementNamed(context, '/questionnaire');
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(

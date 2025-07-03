@@ -11,7 +11,6 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-
 class HomeTask {
   final String title;
   final String subtitle;
@@ -40,14 +39,14 @@ class _HomeState extends State<Home> {
       subtitle: "Stand up and stretch for 2 minutes",
       time: "8:30-16:30",
       color: Colors.green.shade400,
-      isEnabled: true,
+      isEnabled: false,
     ),
     HomeTask(
       title: "Freelance",
       subtitle: "Stand up and stretch for 2 minutes",
       time: "-",
       color: Colors.blue.shade400,
-      isEnabled: true,
+      isEnabled: false,
     ),
   ];
 
@@ -112,6 +111,56 @@ class _HomeState extends State<Home> {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
+          // นาฬิกาตรงกลางเท่ห์ๆ
+          Padding(
+            padding: const EdgeInsets.only(top: 8, bottom: 16),
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(32),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.green.withOpacity(0.15),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                  border: Border.all(color: Colors.green.shade400, width: 2),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.access_time,
+                      color: Colors.green.shade400,
+                      size: 32,
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      _now.hour.toString().padLeft(2, '0') +
+                          ':' +
+                          _now.minute.toString().padLeft(2, '0') +
+                          ':' +
+                          _now.second.toString().padLeft(2, '0'),
+                      style: GoogleFonts.kanit(
+                        textStyle: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.separated(
               itemCount: _tasks.length,
@@ -223,10 +272,7 @@ class _HomeState extends State<Home> {
             Container(
               width: 32,
               height: 32,
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-              ),
+              decoration: BoxDecoration(color: color, shape: BoxShape.circle),
               child: Center(
                 child: Text(
                   number,
@@ -375,14 +421,22 @@ class _HomeState extends State<Home> {
                       selectedColor = Colors.blue.shade400;
                       (context as Element).markNeedsBuild();
                     }),
-                    _buildColorPicker(Colors.orange.shade400, selectedColor, () {
-                      selectedColor = Colors.orange.shade400;
-                      (context as Element).markNeedsBuild();
-                    }),
-                    _buildColorPicker(Colors.purple.shade400, selectedColor, () {
-                      selectedColor = Colors.purple.shade400;
-                      (context as Element).markNeedsBuild();
-                    }),
+                    _buildColorPicker(
+                      Colors.orange.shade400,
+                      selectedColor,
+                      () {
+                        selectedColor = Colors.orange.shade400;
+                        (context as Element).markNeedsBuild();
+                      },
+                    ),
+                    _buildColorPicker(
+                      Colors.purple.shade400,
+                      selectedColor,
+                      () {
+                        selectedColor = Colors.purple.shade400;
+                        (context as Element).markNeedsBuild();
+                      },
+                    ),
                   ],
                 ),
               ],
@@ -403,7 +457,9 @@ class _HomeState extends State<Home> {
                     HomeTask(
                       title: _titleController.text.trim(),
                       subtitle: _subtitleController.text.trim(),
-                      time: _timeController.text.trim().isEmpty ? '-' : _timeController.text.trim(),
+                      time: _timeController.text.trim().isEmpty
+                          ? '-'
+                          : _timeController.text.trim(),
                       color: selectedColor,
                       isEnabled: true,
                     ),
