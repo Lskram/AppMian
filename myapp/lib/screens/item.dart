@@ -22,9 +22,9 @@ class _ItemState extends State<Item> {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: data[index].job.color
+                  color: data[index].job.color,
                 ),
-                margin: EdgeInsets.symmetric(horizontal: 2,vertical: 5),
+                margin: EdgeInsets.symmetric(horizontal: 2, vertical: 5),
                 padding: EdgeInsets.all(25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,8 +38,8 @@ class _ItemState extends State<Item> {
                             textStyle: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white
-                            )
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         Text(
@@ -47,19 +47,15 @@ class _ItemState extends State<Item> {
                           style: GoogleFonts.kanit(
                             textStyle: TextStyle(
                               fontSize: 20,
-                              color:Colors.white,
-                            )
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    Image.asset(
-                      data[index].job.image,
-                      width: 75,
-                      height: 75,
-                    ),
+                    Image.asset(data[index].job.image, width: 75, height: 75),
                   ],
-                )
+                ),
               );
             },
           ),
@@ -68,15 +64,15 @@ class _ItemState extends State<Item> {
           width: 100,
           height: 100,
           child: IconButton(
-            icon: const Icon(Icons.add,size: 40,color: Colors.blue,),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(
-                builder: (ctx) => const Addform(),
-              )
-            );
+            icon: const Icon(Icons.add, size: 40, color: Colors.blue),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (ctx) => const Addform()),
+              );
             },
           ),
-        )
+        ),
       ],
     );
   }

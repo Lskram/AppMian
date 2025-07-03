@@ -82,10 +82,9 @@ class _AddformState extends State<Addform> {
                     _formKey.currentState!.save();
                     data.add(Person(name: _name, age: _age, job: _job));
                     _formKey.currentState!.reset();
-                    Navigator.pushReplacement(context, 
-                      MaterialPageRoute(
-                        builder: (ctx) => const MyApp(),
-                      )
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (ctx) => const MyApp()),
                     );
                   },
                   style: FilledButton.styleFrom(backgroundColor: Colors.blue),

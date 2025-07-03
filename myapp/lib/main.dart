@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screens/exercises.dart';
 import 'package:myapp/screens/home.dart';
+import 'package:myapp/screens/myProfile.dart';
+import 'package:myapp/screens/tips.dart';
 import 'screens/login.dart';
 import 'screens/register.dart';
 
-
 void main() {
-  runApp(const Home());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/home': (context) => const Home(),
+        '/tips': (context) => const TipsPage(),
+        '/exercise': (context) => const OfficeExercisesPage(),
+        '/profile': (context) => const ProfilePage(),
       },
     );
   }
